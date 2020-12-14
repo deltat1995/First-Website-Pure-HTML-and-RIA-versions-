@@ -1,0 +1,348 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    padding: 0px 20px;
+}
+
+h1,h2 {
+    text-align: center;
+}
+
+@font-face {
+  font-family: fonth1;
+  src: url(fonth1.TTF);
+}
+
+h1 {
+    display: inline-block;
+    position: relative;
+    background-color: red;
+    width: fit-content;
+    padding: 0px 20px;
+    margin: 10px 0px 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 5em;
+    font-family: fonth1;
+    border-radius: 8px;
+}
+
+h2 {
+    background-color: rgba(87, 255, 158, 0.74);
+    padding: 10px 0px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);   
+}
+
+ul {
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color:inherit;
+}
+
+.myButton {
+    margin: 0px 0px;
+	box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	background:linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+	background-color:#bddbfa;
+	border-radius:21px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:12px;
+	font-weight:bold;
+	padding:0px 14px;
+	text-decoration:none;
+	text-shadow:2px 2px 4px #528ecc;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
+	background-color:#80b5ea;
+}
+.myButton:active {
+	transform: translateY(1px);	
+}
+
+.frame {
+  height:65%;  
+  border: solid 3px black; 
+}
+
+.column {
+  float: left;
+  height: 100%;
+  position: relative;
+}
+
+.list{
+    padding-top: 8px;
+    overflow: auto;
+    height: 81%;
+    position: absolute;
+    bottom: 3px;
+    right: 0;
+    left: 0;
+    margin: 0;
+}
+
+.left {
+  width: 32%;
+  border-right: solid 3px black; 
+}
+
+.middle {
+  width: 35%;
+  border-right: solid 3px black; 
+}
+
+.right {
+  width: 33%;
+}
+
+.frame:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.titleColumn{
+    margin: 10px 0px 0px;
+    background-color: white;
+    position: relative;
+    height: 7%;
+    line-height: 30px;
+    width: 100%; 
+    padding: 0px 10px;
+    border-bottom: solid 1px black;
+}
+
+.titleColumn span {
+    vertical-align: middle;
+    font-weight:bold;
+}
+
+.selected {
+    background-color: rgba(23, 162, 255, 0.3);
+}
+
+#docInfo {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+    padding-left: 20px;
+    height: 90%;
+}
+
+#sommario{
+    width: 97%;
+    padding: 10px 10px;
+    height: 62%;
+    overflow-y: scroll;
+    -webkit-box-shadow: inset 0px 0px 14px 2px rgba(0,0,0,0.30);
+    -moz-box-shadow: inset 0px 0px 14px 2px rgba(0,0,0,0.30);
+    box-shadow: inset 0px 0px 14px 2px rgba(0,0,0,0.30);
+}
+
+#addDir,#addSubDir,#addDoc {
+    position: absolute;
+    right: 10px;
+    color: gainsboro;
+}
+
+#addDir:hover,#addSubDir:hover,#addDoc:hover {
+    color: black;
+}
+
+#addSubDir{
+    top:14px;
+}
+
+.welcome {
+    position: absolute;
+    right: 40px;
+    top:20px;
+    text-align: center;
+    padding: 10px;
+    border: solid black 1px;
+    border-radius: 10px
+}
+.welcome a {
+    color: blue
+}
+
+.welcome a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.addForm{
+    text-align: center;
+    position: absolute;
+    bottom:40%;
+    transform: translateY(50%);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.addForm input {
+    text-align: center;
+    width: 400px;
+}
+
+.addForm button {
+    padding: 10px;
+}
+
+#addDocForm {
+	height:91%;
+}
+
+#addDocForm form {
+    position: relative;
+    padding: 15px 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+#addDocForm input, #addDocForm select{
+    float:right;
+}
+#addDocForm label {
+    float: left;
+}
+
+#addDocForm textarea { 
+    width: 97%;
+    padding: 10px 10px;
+    height: 58%;
+    overflow-y: scroll;
+    -webkit-box-shadow: inset 0px 0px 14px 2px rgba(0,0,0,0.30);
+    -moz-box-shadow: inset 0px 0px 14px 2px rgba(0,0,0,0.30);
+    box-shadow: inset 0px 0px 14px 2px rgba(0,0,0,0.30);
+}
+
+#addDocForm button{
+    padding: 7px;
+}
+
+.infoPopup{
+	display: inline-block;
+	position: absolute;
+	left: 70px;
+	z-index: 1;
+	border: 1px solid black;
+	padding: 0px 1px;
+	background-color: #fff782;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s;
+	transition-delay: 1s;
+	width: max-content;
+    
+}
+
+.subdirs .infoPopup, #docList .infoPopup{
+    bottom: 24px;
+    left:34%;
+}
+
+span:hover +.infoPopup{
+	visibility: visible;
+	opacity:1;
+}
+
+.list li {
+    position: relative;
+}
+
+#docList li,.subdirs li{
+    padding: 5px 10px;
+    height: 40px;
+    margin-left: 30px;
+}
+
+
+/*LOGIN PAGE*/
+#login,#signup{
+    text-align: center;
+}
+#login h3 {
+    display: inline-block;
+    font-size: 40px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    width: 300px;
+    margin: 10px 0px
+}
+
+#login label, #signup label{
+    font-weight: bold;
+}
+
+.mainBut{
+    height: 30px;
+    width: 100px;
+    font-weight: bolder;
+}
+
+#login a {
+    color: blue
+}
+#login a:hover {
+    width: 10em;
+    text-decoration: underline;
+}
+
+#signup h3 {
+    display: inline-block;
+    font-size: 40px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    width: 300px;
+    margin: 10px 0px
+}
+
+#login label, #signup label {
+    display: inline-block;
+    float: left;
+    width: 10em;
+    text-align: left;
+}
+
+#login input, #signup input {
+  display: inline-block;
+  float: right;
+}
+
+#error {
+    background-color: rgba(255, 0, 0, 0.67);
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    transition: opacity 1s ease-in;
+}
+
+form {
+    display: inline-block;
+}
+

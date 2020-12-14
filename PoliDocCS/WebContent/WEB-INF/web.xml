@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>PoliDocCS</display-name>
+ 
+    <context-param>
+    <param-name>dbUrl</param-name>
+    <param-value>jdbc:mysql://localhost:3306/polidoccs</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbUser</param-name>
+    <param-value>GuestUser</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbPassword</param-name>
+    <param-value>password</param-value>
+  </context-param>
+  <context-param>
+    <param-name>dbDriver</param-name>
+    <param-value>com.mysql.cj.jdbc.Driver</param-value>
+  </context-param>
+  
+  
+  <servlet>
+  <servlet-name>LoginController</servlet-name>
+  <servlet-class>controllers.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>LoginController</servlet-name>
+  <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  <servlet-name>SignUpController</servlet-name>
+  <servlet-class>controllers.SignUpController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>SignUpController</servlet-name>
+  <url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>GetDirsList</servlet-name>
+  <servlet-class>controllers.GetDirsList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>GetDirsList</servlet-name>
+  <url-pattern>/GetDirsList</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>GetDocsList</servlet-name>
+  <servlet-class>controllers.GetDocsList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>GetDocsList</servlet-name>
+  <url-pattern>/GetDocsList</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>GetDocInfo</servlet-name>
+  <servlet-class>controllers.GetDocInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>GetDocInfo</servlet-name>
+  <url-pattern>/GetDocInfo</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>CreateDirectory</servlet-name>
+  <servlet-class>controllers.CreateDirectory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>CreateDirectory</servlet-name>
+  <url-pattern>/AddDir</url-pattern>
+  <url-pattern>/AddSubDir</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+  <servlet-name>CreateDocument</servlet-name>
+  <servlet-class>controllers.CreateDocument</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>CreateDocument</servlet-name>
+  <url-pattern>/AddDoc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>MoveDocument</servlet-name>
+  <servlet-class>controllers.MoveDocument</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>MoveDocument</servlet-name>
+  <url-pattern>/MoveDoc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>TrashController</servlet-name>
+  <servlet-class>controllers.TrashController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>TrashController</servlet-name>
+  <url-pattern>/DelDir</url-pattern>
+  <url-pattern>/DelDoc</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  <servlet-name>Logout</servlet-name>
+  <servlet-class>controllers.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Logout</servlet-name>
+  <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <filter> 
+  <filter-name>loginChecker</filter-name> 
+   <filter-class>filters.loginChecker</filter-class> 
+ </filter> 
+ <filter-mapping> 
+    <filter-name>loginChecker</filter-name>
+    <url-pattern>*.html</url-pattern> 
+    <url-pattern>/GetDirsList</url-pattern> 
+    <url-pattern>/GetDocsList</url-pattern> 
+    <url-pattern>/GetDocInfo</url-pattern> 
+    <url-pattern>/AddDir</url-pattern> 
+    <url-pattern>/AddSubDir</url-pattern> 
+    <url-pattern>/AddDoc</url-pattern> 
+    <url-pattern>/MoveDoc</url-pattern> 
+    <url-pattern>/DelDir</url-pattern>
+  	<url-pattern>/DelDoc</url-pattern>
+ </filter-mapping> 
+ 
+  <welcome-file-list>
+  <welcome-file>login</welcome-file>
+  </welcome-file-list>
+</web-app>

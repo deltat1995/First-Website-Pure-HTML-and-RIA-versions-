@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PoliDoc Handler</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="ajax.js" defer></script>
+    <script src="login.js" defer></script>
+</head>
+
+<body>
+    <h1><a href="homepage.html">PoliDoc Handler</a></h1>
+    <br>
+    <h2>Gestire dei documenti non è mai stato cosi facile!!!</h2>
+    <br>
+    <div id="login" >
+        <h3>Login</h3>
+        <br><br>
+        <form action="#">
+            <label for="username">Username</label>
+            <input type="text" name="username" required><br><br>
+            <label for="password">Password</label>
+            <input type="password" name="password" required><br><br>
+            <button id=loginButton class="mainBut">Login</button><br><br>
+            <span>Sei nuovo? <a id="signupLink" href="#">Registrati</a></span>
+        </form>
+    </div>
+    <div id="signup" hidden>
+        <h3>Sign up</h3>
+        <br><br>
+        <form action="#">
+            <label for="username">Username</label>
+            <input type="text" name="username" required><br><br>
+            <label for="email">Email</label>
+            <input type="email" name="email" required><br><br>
+            <label for="password">Password</label>
+            <input type="password" name="password" required><br><br>
+            <label for="confirm">Confirm Password</label>
+            <input type="password" name="confirm" required><br><br>
+            <button id="backButton" class="mainBut">Back</button>
+            <button id="signupButton" class="mainBut">Sign up</button>  
+        </form>
+    </div>
+    <br><br>
+    <div id="error" hidden>Errore</div>
+</body>
+
+</html>

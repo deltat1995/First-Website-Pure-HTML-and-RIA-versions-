@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>PoliDoc Handler</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/54521ba850.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div  th:fragment="movePage" th:remove="tag">
+    <h3>
+    <i style="margin-left: 30px" class="far fa-file-alt fa-lg"></i> <span  th:text="${doc.name}" th:remove="tag">Documento 1</span> <span style="margin: 0px 10px;">&gt;&gt;&gt;&gt;</span> <i class="fa fa-folder fa-lg"></i> ??? <br><br>
+    <span th:text=#{moveDoc.directive} th:remove="tag">Seleziona una sottocartella dove vuoi spostare il documento:</span>
+    </h3>
+    <ul th:remove="all-but-first">
+        <li th:each="f : ${folders}">
+            <i class="far fa-folder-open fa-2x"></i>
+            <span th:text="${f.key.name}" th:remove="tag">Cartella1</span>
+        <ul class="subdirs" th:remove="all-but-first">
+            <li  th:each="sf : ${f.value}"><i class="fa fa-folder fa-lg"></i> <a th:remove="${doc.idfolder == sf.id}?'tag':'none'" href="documenti.html" th:href="@{/moveDoc(doc=${doc.id},dir=${sf.id})}"><span th:style="${doc.idfolder == sf.id}?'font-weight: bold; color: crimson;':_" th:text="${sf.name}">Cartella11</span></a></li>
+            <li><i class="fa fa-folder fa-lg"></i> <a href="documenti.html">Cartella12</a>
+            </li>
+            <li><i class="fa fa-folder fa-lg"></i> <a href="documenti.html">Cartella13</a>
+            </li>
+        </ul>
+    </li>
+    <li><i class="far fa-folder-open fa-2x"></i> Cartella2 
+        <ul class="subdirs">
+            <li><i class="fa fa-folder fa-lg"></i> <a href="/PoliDoc/getListDocs?dir=21">Cartella 21</a></li>
+        </ul>
+    </li>
+    <li><i class="far fa-folder-open fa-2x"></i> Cartella3 
+        <ul class="subdirs">
+            <li><i class="fa fa-folder fa-lg"></i> <a href="/PoliDoc/getListDocs?dir=31">Cartella 31</a></li>
+            <li><i class="fa fa-folder fa-lg"></i> <a href="/PoliDoc/getListDocs?dir=32">Cartella 32</a></li>
+        </ul>
+    </li>
+    </ul>
+    </div>
+    <br>
+    <div th:fragment="addDir" th:remove="tag">
+    <h3 style="text-align: center" th:text="#{addDir.directive}">Completa e crea una nuova cartella: </h3>
+    <form id="addForm" th:action="@{/Dir/AddPar}" method="post">
+        <input type="text" th:placeholder="#{addDir.placeholder}" placeholder="Inserisci il nome della cartella" name="dirName">
+        <br>
+        <button type="submit" class="myButton" th:text="#{addDir.button}">Crea Cartella</button>
+    </form> 
+    </div>
+    <br>
+    <div th:fragment="addSubDir" th:remove="tag">
+    <h3 style="text-align: center" th:text="#{addSubDir.directive}">Completa e crea una nuova sottocartella: </h3>
+    <form id="addForm" th:action="@{/Dir/AddSub}" method="post">
+        <input type="hidden" name="dir" th:value="${dir}" />
+        <input type="text" th:placeholder="#{addSubDir.placeholder}" placeholder="Inserisci il nome della sottocartella" name="subDirName">
+        <br>
+        <button type="submit" class="myButton" th:text="#{addSubDir.button}">Crea Sottocartella</button>
+    </form> 
+    </div>
+    <br>
+    <div th:fragment="addDoc" th:remove="tag">
+    <h3 th:text="#{addDoc.directive}">Inserisci le informazioni del documento da aggiungere:</h3>
+    <form th:action="@{/Doc/Add}" method="post">
+    <input type="hidden" name="dir" th:value="${dir}" />
+    <label for="dname"><strong th:text="#{info.name}">Nome documento: </strong></label>
+    <input type="text" id="docname" name="dname" maxlength="30"><br><br>
+    <label for="dtype"><strong th:text="#{info.type}">Tipo di file: </strong></label>
+    <select name="dtype">
+    <option value="0">PDF</option>
+    <option value="1">Word Document</option>
+    <option value="2">TXT File</option>
+    <option value="3">Other</option>
+    </select><br><br>
+    <label for="dsum"><strong th:text="#{info.summary}">Sommario: </strong></label><br><br>
+    <textarea name="dsum" rows="16" id="sommario"></textarea><br><br>
+    <button type="submit" th:text="#{addDoc.button}" class="myButton" id="addDocButton">Aggiungi Documento</button>
+    </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div id="delDir" th:fragment="delDir">
+    <h3 th:text="#{delDir.directive}">Elenco dei documenti nella cartella che si vuole eliminare:</h3>
+    <ul th:remove="all-but-first">
+        <li th:each="doc : ${docs}"><i class="far fa-file-alt fa-lg"></i> <span th:text="${doc.name}" th:remove="tag">Documento 1</span></li>
+        <li> <i class="far fa-file-alt fa-lg"> </i> Documento 2</li>
+        <li> <i class="far fa-file-alt fa-lg"> </i> Documento 3</li>
+    </ul>
+    
+    <h3 th:text="#{delDir.alert}">Tutti questi documenti verranno eliminati. Vuoi procedere comunque?</h3>
+    <a th:href="@{/Dir/Del(dir=${dir},isPar=${isPar})}" class="myButton" th:text="#{delDir.y}">SI</a><a th:href="@{/index}" class="myButton" th:text="#{delDir.n}">NO</a>
+    </div>
+</body>
+</html>

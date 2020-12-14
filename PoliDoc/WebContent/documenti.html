@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>PoliDoc Handler - DocsList</title>
+    <link rel="stylesheet" href="style.css" th:href="@{/style.css}">
+    <script src="https://kit.fontawesome.com/54521ba850.js" crossorigin="anonymous"></script>
+</head>
+<body th:with="dateformat=#{date.format}">
+    <h1><a th:href="@{/index}" href="index">PoliDoc Handler</a></h1>
+    <br>
+    <h2 th:text=#{banner}>Gestire dei documenti non è mai stato cosi facile!!!</h2>
+    <br>
+    <br>
+    <h3><span th:text=#{doc.directive} th:remove="tag">Elenco dei documenti nella cartella selezionata:</span>
+    <a th:href="@{/Doc/Add(dir=${folder.id})}" id="addDoc" class="myButton"><span th:text=#{doc.addDoc} th:remove="tag">Aggiungi un documento</span></a></h3>
+    <ul>
+    <li><i class="far fa-folder-open fa-2x"></i> <span th:text="${folder.name}" th:remove="tag">Cartella1</span>
+        <ul class="subdirs" th:remove="all-but-first">
+            <li th:each="doc : ${docs}">
+            <i style="margin-left: 30px" class="far fa-file-alt fa-lg"></i> <span><span id="docname" th:text="${doc.name}">Documento 1</span>
+            <div class="infoPopup" th:text="#{doc.creation(${#dates.format(doc.creationDate,dateformat)})}">Creato il 23/05/2020</div></span>
+            <a th:href="@{/getDocInfo(doc=${doc.id})}" href="docview.html" class="myButton" th:text="#{doc.enter}" >Accedi</a>
+            <a th:href="@{/moveDoc(doc=${doc.id})}" href="homepage.html" class="myButton" th:text="#{doc.move}">Sposta</a>
+            <a th:href="@{/Doc/Del(doc=${doc.id})}" href="" class="myButton" th:text="#{doc.delete}">Elimina</a>
+            </li>
+            <li> 
+            <i style="margin-left: 30px" class="far fa-file-alt fa-lg"></i> <span id="docname">30acaratteriaaaaaaaaaaaaaaaaaa</span>
+            <a class="myButton">Accedi</a>
+            <a class="myButton">Sposta</a>
+            <a href="" class="myButton">Elimina</a>
+            </li>
+            <li> 
+            <i style="margin-left: 30px" class="far fa-file-alt fa-lg"></i> <span id="docname">Documento 3</span> 
+            <a class="myButton">Accedi</a>
+            <a class="myButton">Sposta</a>
+            <a href="" class="myButton">Elimina</a>
+            </li>
+        </ul>
+    </li>
+    </ul>
+</body>
+</html>

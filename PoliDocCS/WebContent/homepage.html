@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PoliDoc Handler</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/54521ba850.js" crossorigin="anonymous"></script>
+    <script src="ajax.js" defer></script>
+    <script src="home.js" defer></script>
+</head>
+
+<body>
+    <div class="welcome">Benvenuto <span id="user"></span> <br><a href="logout">Logout</a></div>
+    <h1><a href="homepage.html">PoliDoc Handler</a></h1>
+    <br>
+    <h2>Gestire dei documenti non è mai stato cosi facile!!!</h2>
+    
+    <div class="frame">
+    <div class="column left">
+    <div class="titleColumn"><span>Seleziona una sottocartella:</span>
+    <a href="#" id="addDir"><i class="fas fa-folder-plus"></i> Aggiungi una cartella</a>
+    </div>
+    <ul>
+        <li id="trash"><i class="far fa-trash-alt fa-2x"></i> Cestino</li>
+    </ul>
+    <ul class="list" id="dirList">
+    </ul>
+    </div>
+    <div class="column middle">
+        <div class="titleColumn"><span>Elenco dei documenti:</span>
+    <a href="#" id="addDoc"><i class="far fa-file fa-1x"></i> Aggiungi un documento</a>
+    </div>
+    <ul>
+        <li id="selectedSubDir"></li>
+    </ul>
+        <ul class="list" id="docList">
+        </ul>
+    </div>
+    <div class="column right">
+    <div class="titleColumn">
+    <span hidden>Informazioni sul documento selezionato:</span>
+    </div>
+    <div id="docInfo" hidden>
+    <p><strong>Nome documento: </strong><span></span></p>
+    <p><strong>Data di creazione: </strong><span></span></p>
+    <p><strong>Tipo di file: </strong><span></span></p>
+    <div><strong>Sommario: </strong></div>
+    <pre id="sommario"></pre>
+   </div>
+   <div id="addDirForm" class="addForm" hidden>
+       <form action="#">
+        <input type="text" placeholder="Inserisci il nome della cartella" name="dirName">
+        <br>
+        <br>
+        <button type="submit" class="myButton">Crea Cartella</button>
+    </form>
+   </div>
+    <div id="addSubDirForm" class="addForm" hidden>
+        <form action="#">
+        <input type="hidden" name="dir" />
+        <input type="text" placeholder="Inserisci il nome della sottocartella" name="subDirName">
+        <br>
+        <br>
+        <button type="submit" class="myButton">Crea Sottocartella</button>
+    </form>
+    </div>
+     <div id="addDocForm" hidden>
+        <form action="#">
+        <input type="hidden" name="dir"/>
+        <label for="dname"><strong>Nome documento: </strong></label>
+        <input type="text" id="docname" name="dname"><br><br>
+        <label for="dtype"><strong>Tipo di file: </strong></label>
+        <select name="dtype">
+        <option value="0">PDF</option>
+        <option value="1">Word Document</option>
+        <option value="2">TXT File</option>
+        <option value="3">Other</option>
+        </select><br><br>
+        <label for="dsum"><strong>Sommario: </strong></label><br><br>
+        <textarea name="dsum" rows="16"></textarea><br><br>
+        <button type="submit" class="myButton">Aggiungi Documento</button>
+    </form> 
+     </div>
+    </div>
+    </div>
+    <br>
+    <div id="error" hidden>Errore</div>
+</body>
+
+</html>

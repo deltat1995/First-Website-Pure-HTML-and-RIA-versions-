@@ -1,0 +1,193 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    padding: 0px 20px;
+}
+
+h1,h2 {
+    text-align: center;
+}
+
+h3 {
+	margin-top:0px;
+}
+
+@font-face {
+  font-family: fonth1;
+  src: url(/PoliDoc/fonth1.TTF);
+}
+
+h1 {
+    display: inline-block;
+    position: relative;
+    background-color: red;
+    width: fit-content;
+    padding: 0px 20px;
+    margin: 10px 0px 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 5em;
+    font-family: fonth1;
+    border-radius: 8px;
+}
+
+h2 {
+    background-color: rgba(87, 255, 158, 0.74);
+    padding: 10px 0px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.75);   
+}
+
+ul {
+    list-style-type: none;
+}
+.subdirs {
+    padding: 10px 30px;
+}
+
+.subdirs li{
+    padding: 5px 10px;
+    height: 40px;
+}
+
+.myButton {
+    margin: 10px 0px;
+	box-shadow:inset 0px 1px 0px 0px #dcecfb;
+	background:linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+	background-color:#bddbfa;
+	border-radius:21px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:12px;
+	font-weight:bold;
+	padding:8px 14px;
+	text-decoration:none;
+	text-shadow:2px 2px 4px #528ecc;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #80b5ea 5%, #bddbfa 100%);
+	background-color:#80b5ea;
+}
+.myButton:active {
+	transform: translateY(1px);
+	
+}
+
+#sommario{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    padding: 10px 10px;
+    height: 42%;
+    overflow-y: scroll;
+    -webkit-box-shadow: inset 0px 0px 14px 2px rgba(0,0,0,0.30);
+    -moz-box-shadow: inset 0px 0px 14px 2px rgba(0,0,0,0.30);
+    box-shadow: inset 0px 0px 14px 2px rgba(0,0,0,0.30);
+}
+
+a{
+    text-decoration: none;
+    color:inherit;
+}
+
+.icon{
+    margin-left: 10%;
+    opacity: 40%;
+    font-size: 0.9em;
+}
+
+.icon:hover {
+    opacity: 100%;
+}
+
+span{
+	position:relative;
+}
+
+.infoPopup{
+	display: inline-block;
+	position: absolute;
+	bottom: 90%;
+	left: 5%;
+	z-index: 1;
+	border: 1px solid black;
+	padding: 0px 1px;
+	background-color: #fff782;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s;
+	transition-delay: 0.5s;
+	width: max-content;
+}
+
+span:hover .infoPopup{
+	visibility: visible;
+	opacity:1;
+}
+
+li {
+	position:relative;
+}
+.delsub {
+	position: absolute;
+	left: -1%;
+	opacity: 10%;
+}
+
+.delsub:hover {
+	opacity: 100%
+}
+
+#addDir,#addDoc{
+    position: absolute;
+    right: 5%;
+}
+
+#addForm{
+    text-align: center;
+}
+
+#addForm input{
+    width: 250px;
+    text-align: center;
+}
+
+#delDir{
+    text-align: center;
+}
+
+#delDir li {
+    padding: 10px 0px;
+}
+
+#delDir .myButton {
+    padding: 15px;
+    margin: 5px 60px;
+    border-radius: 50%;
+}
+
+#docname {
+    display: inline-block;
+    width: 240px;
+}
+
+#addDocButton {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+}

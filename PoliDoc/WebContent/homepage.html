@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>PoliDoc Handler</title>
+    <link rel="stylesheet" href="style.css" th:href="@{/style.css}">
+    <script src="https://kit.fontawesome.com/54521ba850.js" crossorigin="anonymous"></script>
+</head>
+
+<body th:with="dateformat=#{date.format}">
+    <h1><a th:href="@{/index}" href="index">PoliDoc Handler</a></h1>
+    <br>
+    <h2 th:text=#{banner}>Gestire dei documenti non è mai stato cosi facile!!!</h2>
+    <br>
+    <br>
+    <div  th:replace="${moveDoc}?~{fragments :: movePage}:_">
+    <h3><span th:text=#{home.directive} th:remove="tag">Seleziona una sottocartella per vedere i documenti al suo interno:</span>
+    <a href="addDir.html" th:href="@{/Dir/AddPar}" id="addDir" class="myButton"><span th:text=#{home.addDir} th:remove="tag">Aggiungi una cartella</span></a></h3>
+    <ul th:remove="all-but-first">
+        <li th:each="f : ${folders}">
+            <i class="far fa-folder-open fa-2x"></i>
+            <span><span th:text="${f.key.name}" th:remove="tag">Cartella1</span>
+                <div class="infoPopup" th:text="#{dir.creation(${#dates.format(f.key.creationDate,dateformat)})}">Creata il 23/05/2020</div></span>
+                <a href="addDir.html" th:href="@{/Dir/AddSub(dir=${f.key.ID})}" class="icon"><i class="fas fa-folder-plus fa-lg"></i> <span th:text=#{home.addSubdir} th:remove="tag">Aggiungi Sottocartella</span></a>
+                <a href="delDir.html" th:href="@{/Dir/DelPar(dir=${f.key.ID})}" class="icon"><i class="fas fa-trash fa-lg"></i> <span th:utext=#{home.delDir} th:remove="tag">Elimina Cartella</span></a>
+        <ul class="subdirs" th:remove="all-but-first">
+            <li  th:each="sf : ${f.value}"><a href="delDir.html" th:href="@{/Dir/DelSub(dir=${sf.ID})}" class="delsub"><i class="fas fa-times fa-lg"></i></a> <i class="fa fa-folder fa-lg"></i> <a href="documenti.html" th:href="@{/getListDocs(dir=${sf.ID})}"><span><span th:text="${sf.name}" th:remove="tag">Cartella11</span><div class="infoPopup" th:text="#{dir.creation(${#dates.format(sf.creationDate,dateformat)})}">Creata il 23/05/2020</div> </span></a></li>
+            <li><a href="" class="delsub"><i class="fas fa-times fa-lg"></i></a> <i class="fa fa-folder fa-lg"></i> <a href="/PoliDoc/getListDocs?dir=12"><span> Cartella12 <div class="infoPopup">Creata il 20/05/2020</div> </span></a></li>
+            <li><a href="" class="delsub"><i class="fas fa-times fa-lg"></i></a> <i class="fa fa-folder fa-lg"></i> <a href="/PoliDoc/getListDocs?dir=13"><span> Cartella13 <div class="infoPopup">Creata il 19/05/2020</div> </span></a></li>
+        </ul>
+    </li>
+    <li><i class="far fa-folder-open fa-2x"></i> Cartella2 <a href="" class="icon"><i class="fas fa-folder-plus fa-lg"></i> Aggiungi Sottocartella</a>
+        <ul class="subdirs">
+            <li><i class="fa fa-folder fa-lg"></i> <a href="/PoliDoc/getListDocs?dir=21">Cartella 21</a></li>
+        </ul>
+    </li>
+    <li><i class="far fa-folder-open fa-2x"></i> Cartella3 <a href="" class="icon"><i class="fas fa-folder-plus fa-lg"></i> Aggiungi Sottocartella</a>
+        <ul class="subdirs">
+            <li><i class="fa fa-folder fa-lg"></i> <a href="/PoliDoc/getListDocs?dir=31">Cartella 31</a></li>
+            <li><i class="fa fa-folder fa-lg"></i> <a href="/PoliDoc/getListDocs?dir=32">Cartella 32</a></li>
+        </ul>
+    </li>
+    </ul>
+    </div>
+</body>
+</html>
